@@ -321,14 +321,14 @@ void hydrologyMakeUpHeader(char funcode)
 //    int picturesize;
     hydrologyHeader* pheader = (hydrologyHeader*) (g_HydrologyMsg.header);
 
-    Hydrology_WriteStoreInfo(HYDROLOGY_PASSWORD_ADDR,pheader->password,HYDROLOGY_PASSWORD_LEN);
+    Hydrology_ReadStoreInfo(HYDROLOGY_PASSWORD_ADDR,pheader->password,HYDROLOGY_PASSWORD_LEN);
     
     pheader->framestart[0] = SOH1;
     pheader->framestart[1] = SOH2;
 
     Hydrology_ReadStoreInfo(HYDROLOGY_CENTER_ADDR,&(pheader->centeraddr),HYDROLOGY_CENTER_LEN);
     
-    Hydrology_WriteStoreInfo(HYDROLOGY_REMOTE_ADDR,pheader->remoteaddr,HYDROLOGY_REMOTE_LEN);
+    Hydrology_ReadStoreInfo(HYDROLOGY_REMOTE_ADDR,pheader->remoteaddr,HYDROLOGY_REMOTE_LEN);
     
     pheader->funcode = funcode;
     pheader->dir_len[0] = 0 << 4;
